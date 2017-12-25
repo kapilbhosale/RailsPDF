@@ -1,0 +1,35 @@
+<html>
+<head>
+
+<style>@page { size: A4 }</style>
+</head>
+<body class="A4">
+
+  <h1>Students</h1>
+  <% unless request.format.to_sym == :pdf %>
+  <%= link_to 'download file', '/download_sutdents.pdf', { format: :pdf } %>
+  <% end %>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @students.each do |student| %>
+      <tr>
+        <td><%= student.name %></td>
+        <td><%= student.email %></td>
+        <td><%= student.phone %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+  <hr>
+  Page <span class="page"></span> of <span class="topage"></span>
+</body>
+</html>
